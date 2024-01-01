@@ -1,0 +1,17 @@
+https://leetcode.com/problems/assign-cookies/
+* soltion in python3 *
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        g.sort()#sorting the childrens 
+        s.sort()#cookie
+        cookies=0 #number of cookies used - output
+        currgi =0 #current child index to be checked if he can be content with the current lot of cookies left
+        for i in range(len(s)):
+            if currgi==len(g):   
+                break       #if last child if content, then we have our answer
+            currk = s[i]    #current smallest cookie
+            currg=g[currgi]
+            if currk >=currg:    # cheking the condition
+                cookies+=1
+                currgi+=1   # if yes then go to next child
+        return cookies
