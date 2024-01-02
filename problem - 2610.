@@ -1,0 +1,43 @@
+# python solution #
+class Solution:
+    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+        # Create a dictionary 'd' to store the frequency of each element in 'nums'
+        d = {}
+        for i in nums:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] += 1
+        
+        # Find the element 'curr' with the maximum frequency in 'nums'
+        max_freq = 0
+        curr = 0
+        for i in d.keys():
+            if d[i] > max_freq:
+                max_freq = d[i]
+                curr = i
+        # 'row' represents the maximum frequency, initialize an empty list 'l'
+        row = max_freq
+        l = []
+        # Create 'row' number of rows in the matrix, each having 'curr' as the first element
+        for j in range(row):
+            l.append([curr])
+        # Reset the frequency of 'curr' to 0
+        d[curr] = 0
+        # Populate the matrix with the remaining elements based on their frequencies
+        for i in d.keys():
+            j = 0
+            while d[i] != 0:
+                d[i] -= 1
+                l[j].append(i)
+                j += 1
+        # Return the final matrix
+        return l
+
+##APPROACH Explanation:##
+# The code starts by counting the frequency of each element in the given list 'nums' using a dictionary 'd'.
+# It then finds the element ('curr') with the maximum frequency in 'nums'.
+# It initializes an empty list 'l' to represent the matrix and creates 'row' number of rows, each starting with 'curr'.
+# The frequency of 'curr' is reset to 0 in the dictionary.
+# The matrix is populated with the remaining elements based on their frequencies in the dictionary.
+# Note: The variable names have been adjusted to avoid conflicts (e.g., using 'max_freq' instead of 'max' since 'max' is a built-in function in Python).
