@@ -1,0 +1,87 @@
+DPP ( python solution):
+
+from typing import List
+
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        # Initialize a list to store the count of '1' in each row
+        l = []
+        n = len(bank)
+        
+        # Iterate over each row in the bank
+        for i in range(n):
+            R = bank[i]
+            count = 0
+            
+            # Count the number of '1' in the current row
+            for j in R:
+                if j == '1':
+                    count += 1
+            
+            # Append the count to the list
+            l.append(count)
+        
+        # Initialize the answer variable
+        answer = 0
+        
+        # Iterate over the counts (except the last one)
+        for i in range(n-1):
+            curr = l[i]
+            
+            # If the count is 0, skip to the next iteration
+            if curr == 0:
+                continue
+            
+            index = i + 1
+            next_count = l[index]
+            
+            # Update the answer by multiplying the counts
+            while next_count == 0 and index < n-1:
+                index += 1
+                next_count = l[index]
+                
+                # If we reach the end and the next count is still 0, return the current answer
+                if index == len(l) and next_count == 0:
+                    return answer
+            
+            # Update the answer by multiplying the counts
+            answer += next_count * curr
+        
+        # Return the final answer
+        return answer
+
+
+
+
+approach expalnation:
+Certainly, here's a concise explanation in 10 points:
+
+1. **Input:**
+   - The function takes a list of binary strings, `bank`, where each string represents a row with '1' indicating the presence of a beam.
+
+2. **Counting '1's:**
+   - It iterates through each row, counting the occurrences of '1' and storing the counts in a list `l`.
+
+3. **Initialization:**
+   - Initializes `answer` to 0, which will store the total number of beams formed.
+
+4. **Iteration:**
+   - Iterates through the counts in `l` (excluding the last count).
+
+5. **Multiplication:**
+   - Multiplies each non-zero count with the next non-zero count, adding the result to `answer`.
+
+6. **Handling Zero Counts:**
+   - Skips the iteration if the current count is zero.
+
+7. **Loop Correction:**
+   - Corrects a loop condition to prevent an "IndexError" when checking for the next non-zero count.
+
+8. **End of List Check:**
+   - Checks for reaching the end of the list while looking for the next non-zero count and returns the current answer if the last count is zero.
+
+9. **Total Beams:**
+   - The final result in `answer` represents the total number of beams formed based on the given criteria.
+
+10. **Output:**
+   - Returns the computed total number of beams as the output of the function.
