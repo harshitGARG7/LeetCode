@@ -1,3 +1,5 @@
+https://leetcode.com/problems/longest-increasing-subsequence/description/?envType=daily-question&envId=2024-01-05
+**pyton3 solution**
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         lis = [1]*len(nums)
