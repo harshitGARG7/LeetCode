@@ -1,0 +1,20 @@
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        d={}
+        for i in nums:
+            if i not in d:
+                d[i]=1
+            else:
+                d[i]+=1
+        if 1 in d.values():
+            return -1
+        ans=0
+        for i in d.keys():
+            print (i)
+            print("ans before : ", i, "with freq. : ",  d[i]," is : ", ans, ". ")
+            if d[i]%3==0:
+                ans+=int(d[i]/3)
+            else:
+                ans+= int(d[i]//3) + 1
+            print("ans after i is : ", ans, ". " )
+        return ans
