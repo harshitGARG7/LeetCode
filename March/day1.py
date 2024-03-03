@@ -1,4 +1,4 @@
-#Day1  : problem solved
+#Day1 2864 : problem solved
 class Solution:
     def maximumOddBinaryNumber(self, s: str) -> str:
         for i in s:
