@@ -1,4 +1,4 @@
-#day6
+#day5
 class Solution:
     def minimumLength(self, s: str) -> int:
         left, right = 0, len(s) - 1
