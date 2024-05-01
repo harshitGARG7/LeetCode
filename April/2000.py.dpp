@@ -1,0 +1,15 @@
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        if ch not  in word:
+            return word
+        else:
+            
+            for i in range(len(word)):
+                if word[i]==ch:
+                    break
+        a=""
+        for j in range(0,i+1):
+            a=word[j]+a
+        for j in range(i+1,len(word)):
+            a+=word[j]
+        return a
